@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refocus - Recovery Without the Guilt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #10b981 0%, #047857 50%, #065f46 100%);
+            color: white;
+            padding: 80px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251,191,36,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+        
+        .compass-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .subheadline {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #047857;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 80px 20px;
+            background: #f9fafb;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+        
+        .problem-list {
+            max-width: 600px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #4b5563;
+        }
+        
+        .problem-item::before {
+            content: '❌';
+            margin-right: 12px;
+            font-size: 20px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .features-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: #f9fafb;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(16,185,129,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #047857;
+        }
+        
+        .feature-description {
+            font-size: 16px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #064e3b 0%, #1e293b 100%);
+            color: white;
+        }
+        
+        .steps {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            gap: 40px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fbbf24;
+            min-width: 60px;
+        }
+        
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #fbbf24;
+        }
+        
+        .step-content p {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            padding: 80px 20px;
+            background: white;
+            text-align: center;
+        }
+        
+        .quote {
+            max-width: 700px;
+            margin: 40px auto;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #4b5563;
+            font-style: italic;
+        }
+        
+        /* Signup Section */
+        .signup {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .signup-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 14px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16,185,129,0.3);
+        }
+        
+        .fine-print {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #d1fae5;
+            color: #047857;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            background: #0f172a;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .subheadline { font-size: 18px; }
+            .section-title { font-size: 32px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .step { flex-direction: column; }
+            .step-number { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="compass-icon">🧭</div>
+            <h1>Take Control</h1>
+            <p style="font-size: 28px; font-weight: 600; margin-bottom: 16px; opacity: 0.9;">
+                Recovery Without the Guilt
+            </p>
+            <p class="subheadline">
+                Refocus helps you overcome porn addiction by tracking progress, not perfection. 
+                Every day you show up counts—even the hard ones.
+            </p>
+            <a href="#signup" class="cta-button">Join the Beta Waitlist →</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <h2 class="section-title">Traditional recovery apps make you feel like a failure</h2>
+        <div class="problem-list">
+            <div class="problem-item">One relapse resets your entire streak to zero</div>
+            <div class="problem-item">You lose all your progress in an instant</div>
+            <div class="problem-item">The shame makes recovery harder, not easier</div>
+            <div class="problem-item">It's all about what you didn't do, never what you did</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title" style="text-align: center;">A better way to recover</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🪙</div>
+                <h3 class="feature-title">Token System</h3>
+                <p class="feature-description">
+                    Earn a token for every clean day. They never go away—your progress is safe, always.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3 class="feature-title">Daily Progress</h3>
+                <p class="feature-description">
+                    Every day you check in counts, whether clean or reset. Showing up is what matters.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Process Over Perfection</h3>
+                <p class="feature-description">
+                    Track your consistency, not just your streaks. See your real progress over time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2 class="section-title" style="text-align: center;">Simple, private, judgment-free</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Check in daily</h3>
+                    <p>Answer one question: "Clean day or reset day?" Your choice is private and judgment-free.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Earn tokens</h3>
+                    <p>Clean days earn tokens. Reset days still count as progress. Nothing ever gets taken away.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Reflect and grow</h3>
+                    <p>Daily journaling helps you understand your triggers and build healthier patterns.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>See your progress</h3>
+                    <p>Watch your consistency grow over time. Your percentage tells the real story.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <h2 class="section-title">Built by someone who gets it</h2>
+        <p class="quote">
+            Refocus was created by someone in recovery who was frustrated with guilt-based apps. 
+            This isn't about perfection—it's about progress. Join others in private beta and take control of your journey.
+        </p>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup" id="signup">
+        <h2 class="section-title">Ready to take control?</h2>
+        <p class="subheadline">Join the private beta. Limited spots available.</p>
+        
+        <form class="signup-form" id="signupForm">
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="name">First Name (Optional)</label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+                <label for="device">Device *</label>
+                <select id="device" name="device" required>
+                    <option value="">Select your device</option>
+                    <option value="iphone">iPhone</option>
+                    <option value="android">Android</option>
+                    <option value="both">Both</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="submit-button">Get Beta Access</button>
+            
+            <div class="success-message" id="successMessage">
+                ✅ Thank you! You're on the waitlist. We'll email you soon.
+            </div>
+            
+            <p class="fine-print">
+                Free forever. No credit card required. Your data is private and never shared.
+            </p>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Refocus. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 14px;">
+            Built with purpose. Designed for recovery.
+        </p>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                device: document.getElementById('device').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Log to console (you'll replace this with actual backend)
+            console.log('New signup:', formData);
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Here you would send to your backend:
+            // fetch('YOUR_API_ENDPOINT', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+        });
+        
+        // Smooth scroll for CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
